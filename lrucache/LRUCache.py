@@ -19,7 +19,7 @@ class SimpleCache:
         self.max_size = max_size
         self.cache = OrderedDict()
 
-    def get(self, key):
+    def fast_rate_lookup(self, key):
         """
         For a given key, return the value from the cache
 

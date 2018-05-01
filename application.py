@@ -33,7 +33,7 @@ def main(verbose=False):
     input_address_str = input("Address to look up? ")
 
     # Check the cache
-    sales_tax = address_cache.get(input_address_str)
+    sales_tax = address_cache.fast_rate_lookup(input_address_str)
 
     if sales_tax == -1:
         # Call the PSL function

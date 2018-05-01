@@ -37,7 +37,8 @@ in program memory (i.e., a persistent variable is okay for the exercise).
 
 * The solution uses a Least Recently Used (LRU) replacement policy.
 * The cache makes use of an OrderedDict to preserve key/value order
-* If the address is missing from the cache, -1 is returned and the `sales_tax_lookup` function is called
+* The solution checks the LRU cache object `SimpleCache` using `fast_rate_lookup` method call
+* If the address is missing from the cache, `-1` is returned and the `sales_tax_lookup` function is called
 * If the address is in the cache, it is returned
 * If adding the address exceeds the cache `max_size`, the least used key/value pair in the cache expires and is replaced with the new address
 
