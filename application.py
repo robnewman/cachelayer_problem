@@ -49,6 +49,7 @@ def main(verbose=False):
     
     return sales_tax
 
+
 if __name__ == "__main__":
 
     ## Initialize argument parser
