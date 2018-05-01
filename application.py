@@ -1,4 +1,5 @@
 import argparse
+import random
 from lrucache import LRUCache
 
 def sales_tax_lookup(address):
@@ -29,26 +30,38 @@ def main(verbose=False):
     # Initialize a new LRU cache with size of max_size
     address_cache = LRUCache.SimpleCache(max_size=50000)
 
-    # Accept simple user input
-    input_address_str = input("Address to look up? ")
-
+    # Accept first simple user input
+    input_address_str_1 = input("1. First address to look up? ")
     # Check the cache
-    sales_tax = address_cache.fast_rate_lookup(input_address_str)
-
-    if sales_tax == -1:
+    sales_tax_1 = address_cache.fast_rate_lookup(input_address_str_1)
+    if sales_tax_1 == -1:
         # Call the PSL function
         if verbose:
             print("Missing from cache -- calling PSL function")
-        sales_tax = sales_tax_lookup(input_address_str)
+        sales_tax_1 = sales_tax_lookup(input_address_str_1)
         # Add new sales_tax value to the cache
-        address_cache.set(input_address_str, sales_tax)
+        address_cache.set(input_address_str_1, sales_tax_1)
 
     if verbose:
-        print("Sales tax rate for address: %0.2f" % sales_tax)
+        print("Sales tax rate for address (%s): %0.2f" % (input_address_str_1, sales_tax_1))
         print("Current cache size: %d" % address_cache.size())
     
-    return sales_tax
+    # Accept second simple user input
+    input_address_str_2 = input("2. Second address to look up? ")
+    # Check the cache
+    sales_tax_2 = address_cache.fast_rate_lookup(input_address_str_2)
+    if sales_tax_2 == -1:
+        # Call the PSL function
+        if verbose:
+            print("Missing from cache -- calling PSL function")
+        sales_tax_2 = sales_tax_lookup(input_address_str_2)
+        # Add new sales_tax value to the cache
+        address_cache.set(input_address_str_2, sales_tax_2)
 
+    if verbose:
+        print("Sales tax rate for address (%s): %0.2f" % (input_address_str_2, sales_tax_2))
+        print("Current cache size: %d" % address_cache.size())
+ 
 
 if __name__ == "__main__":
 
